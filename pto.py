@@ -59,7 +59,17 @@ print("It takes " + year + " years (" + max_weeks + " weeks) to accrue " + max_h
 
 
 #how much pto can you expend yearly and never run out?
-acc = input("Want to know how many PTO days you can take each year and never run out?  How many days do you already have accrued? ")
+start = int(input("Want to know how many PTO days you can take each year and never run out?  How many days do you already have accrued? "))
 
-
+#yearlyAccrual - daysOff = startPoint, aka how much you accru each year minus the amount you take off gets you back to start
+#daysOff = yearlyAccrual - startPoint
+#we know startPoint but the problem is that yearlyAccrual and daysOff are both unknowns
+# so we iterate with one number and then change it to a differnet one?
+days = 365
+hours_off = days*8
+y = 6.47 - hours_off
+x = 0
+while days > 0:
+   #Iterate through each day counting down from 365, see when we hit less than start, then go one back up and return that value  
+    days -= 1
 print("You can take up to " +days+ " of PTO each year and never run out!")

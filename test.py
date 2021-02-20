@@ -9,9 +9,10 @@ start = int(input("Want to know how many PTO days you can take each year and nev
 #we know startPoint but the problem is that yearlyAccrual and daysOff are both unknowns
 # so we iterate with one number and then change it to a differnet one?
 
-daysOff = 365
+daysOff = 20 
+z = 0
 
-while daysOff > 0:
+while daysOff > z:
     y = start
     while y > 0:
         hoursAcc = (y*8) - (daysOff*8)
@@ -22,7 +23,10 @@ while daysOff > 0:
         daysAcc = hoursAcc/8
         if daysAcc >= y:
             print("If you start with "+str(y)+" days accrued you can take "+str(daysOff)+" days of pto without running out.")
+            break
 #        print(str(daysAcc))
         y -= 1
-    daysOff -= 1
+    z += 1
 #print("You can take up to " +days+ " of PTO each year and never run out!")
+
+

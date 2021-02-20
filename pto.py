@@ -57,24 +57,18 @@ max_hours = str(max_pto)
 print("It takes " + year + " years (" + max_weeks + " weeks) to accrue " + max_hours +" hours (" + max_days + " days) of pto, the highest possible amount if you plan to take off " + str(days_off) + " days of PTO every year.")
 
 
+#how much pto can you take and never run out?
 
-#how much pto can you expend yearly and never run out?
-start = int(input("Want to know how many PTO days you can take each year and never run out?  How many days do you already have accrued? "))
+testDays = 365
 
-#yearlyAccrual - daysOff = startPoint, aka how much you accru each year minus the amount you take off gets you back to start
-#daysOff = yearlyAccrual - startPoint
-#we know startPoint but the problem is that yearlyAccrual and daysOff are both unknowns
-# so we iterate with one number and then change it to a differnet one?
-days = 10
-hours_off = days*8
-
-while days > 0:
-    y = 0 - hours_off + start
-    x = 0
-    #Iterate through each day counting down from 365, see when we hit less than start, then go one back up and return that value  
-    while x <= 26:
-        y += 6.47
-        x += 1
-    print(str(y/8))
-    days -= 1
-#print("You can take up to " +days+ " of PTO each year and never run out!")
+while testDays > 0:
+  start = 31.5
+  while start > 0:
+    hoursOff = (start*8) + (6.47*26) - (testDays*8)
+    hoursStart = start*8
+    if hoursOff >= hoursStart:
+      print("You can take: "+str(testDays)+" days off if you start with "+str(start)+" days accrued")
+    start -= 1
+  if hoursOff >= hoursStart:
+    break
+  testDays -= 1
